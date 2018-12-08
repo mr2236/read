@@ -47,7 +47,7 @@ def details(request, pk):
     ).annotate(
         votos=(F('marcacaoLei__votos'))
     )      
-    )
+    ).order_by('created_at')
 
     
     context = {
