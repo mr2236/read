@@ -1,6 +1,6 @@
 *.pyc
 medium/staticfiles
-medium/env
+venv
 medium/scrapy
 
 
