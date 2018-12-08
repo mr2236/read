@@ -2,6 +2,8 @@
 medium/staticfiles
 venv
 medium/scrapy
+*.sqlite3
+medium/media
 
 
 
