@@ -1,0 +1,31 @@
+{% extends 'accounts/dashboard.html' %}
+{% block breadcrumb%}
+    {{block.super}}
+    / <a href="{% url 'accounts:editar' %}">Editar Conta</a>
+{% endblock%}
+{% block dashboard_content %}
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 col-md-offset-2">
+                    <form method="POST">
+                       {% csrf_token %}
+                       {% if success %}
+                            <p>Dados alterados com sucesso</p>
+                       {% endif %}
+                       {{form.non_field_errors}}
+                       {% for field in form%}
+                         {{field.label_tag}}
+                         <p>{{field}}</p>
+                         {{field.errors}}
+                       {% endfor %}
+                    <button class="btn btn-primary" type="submit">Atualizar</button>                    
+                </form> 
+                
+                        
+            </div>
+        </div>
+    </div>
+
+{% endblock%}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Begin Site Title
+================================================== -->
+<div class="container">
+           
+        <!-- Begin List Posts
+        ================================================== -->
+        {% if request.user.is_authenticated %}
+        <section class="recent-posts">
+        <div class="section-title">
+            <h2><span>Suas leis</span></h2>
+        </div>
+        <div class="card-columns listrecent">
+            
+            {% for lei in leis %}            
+           
+            <!-- begin post -->
+            <div class="card">
+                <!--a href="post.html">
+                    {% if lei.image %} 
+                    <img class="img-fluid" src="{{lei.image.url}}" alt="{{lei.name}}">
+                    {% else %}
+                    <img class="img-fluid" src="{% static 'img/default.jpg' %}" alt="default" />
+                    {% endif %}
+                </a-->
+                    <div class="card-block">                    
+                        <h2 class="card-title"><a href="{% url 'leis:details'  pk=lei.id %}"> {{lei.name}}</a></h2>
+                        <h4 class="card-text"><a href="{% url 'leis:details'  pk=lei.id %}">{{lei.description|linebreaks}}</a></h4>
+                        <div class="metafooter">
+                            <div class="wrapfooter">
+                                <span class="meta-footer-thumb">
+                                <!--a href="author.html"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"></a-->
+                                </span>
+                                <span class="author-meta">
+                                <span class="post-name">Última atualização:</span><br/>
+                                <span class="post-date">{{lei.updated_at}}</span>
+                                </span>
+                                <!--span class="post-read-more"><a href="post.html" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path></svg></a></span-->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <!-- end post -->
+            
+        {% endfor %}
+    
+        </div>
+         {% endif %}
+        </section>
+        <!-- End List Posts
+        ================================================== -->
+        <ul>
+        <hr/>
+         <div class="section-title">
+            <h2><span>Outras leis</span></h2>
+        </div>
+        <div class="list-group">
+        {% for lei_all in leis_all %}        
+           <a href="{% url 'leis:details'  pk=lei_all.id %}" class="list-group-item list-group-item-action">{{lei_all.name}}</a>
+        {% endfor %}
+        </div>
+</div>
+{% endblock %}
+
+
+
+

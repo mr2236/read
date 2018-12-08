@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- Begin Article
+        ================================================== -->
+        <div class="container">
+
+
+                <div class="row">            
+                    <!-- Begin Fixed Left Share -->
+                    <div class="col-md-2 col-xs-12">
+                        
+                        <!--h5>Meu Painel</h5>                        
+                        <ul>
+                            <li><a href="#">Lei</a></li>                            
+                            <li><a href="#">Lei</a></li>
+                            <li><a href="#">Lei</a></li>
+                        </ul>
+                        <hr/-->
+                        <h5>Minha Conta</h5>
+                       
+                        <ul>
+                            <li><a href="{% url 'accounts:editar' %}">Editar Conta</a></li>                            
+                            <!--li><a href="{% url 'accounts:editar_password' %}">Alterar Senha</a></li-->                            
+                        </ul>
+                       
+                    </div>
+
+                    <!-- End Fixed Left Share -->
+            
+                    <!-- Begin Post -->
+                    <div class="col-md-8 col-md-offset-2 col-xs-12">                            
+                            <div id="breadcrumb">
+                                    {% block breadcrumb%}
+                                        <a href="{% url 'accounts:dashboard' %}">Meu Painel</a>
+                                    {% endblock%}
+                            </div>
+                        <div class="mainheading">
+                            <h1 class="posttitle"> </h1>            
+                        </div>                        
+                        <div class="article-post">
+                                {%block dashboard_content%}
+                                Nome de usuario: {{request.user}}<br/>
+                                Email: {{request.user.email}}<br/>
+                                Data de cadastro no site: {{request.user.date_joined}}
+                                {% endblock %}
+                        </div>
+                    </div>
+                    
+            
+                </div>
+            </div>
+            <!-- End Article
+            ================================================== -->
+{% endblock %}
