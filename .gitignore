@@ -4,6 +4,4 @@ venv
 medium/scrapy
 *.sqlite3
 medium/media
-
-
-
+db.sqlite3
