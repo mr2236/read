@@ -34,8 +34,10 @@
                         {% for artigo in artigos %}  
                         <div class="row row-artigo">
                           <div class="col-md-10 text-justify">
-                            <span class='artigo {% if artigo.is_titulo %}artigo_titulo {%endif%}  {% if artigo.is_marcado %} highlight {%endif%}'  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}">                           
-                                    {{artigo|linebreaks}}
+                            <span class='artigo {% if artigo.is_marcado %} highlight {%endif%} {% if artigo.is_titulo %}artigo_titulo{%endif%}'  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}">                           
+                                    {% if artigo.is_titulo %} {{artigo|linebreaks}}
+                                    {%else %}{{artigo}}
+                                    {%endif%}
                             </span>
                           </div>
                           <div class="col-md-2 text-right">

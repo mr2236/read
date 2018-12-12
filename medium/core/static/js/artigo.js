@@ -66,7 +66,8 @@ function exitHandler() {
 }  
 
 
-$("span.artigo").on("dblclick",(function(e){    
+//$("span.artigo").on("dblclick",(function(e){    
+$(document).on("dblclick", "span.artigo", function(e) {
     e.preventDefault();
     let artigo = $(this).data('artigo');
     let lei = $(this).data('lei');
@@ -104,7 +105,7 @@ $("span.artigo").on("dblclick",(function(e){
           }
     });
    
-}));
+});
 
 $('body').on('click', 'button.btn-fechar-comentario', function() {    
   console.log($(this).parents().parents().find('#comment').val());
