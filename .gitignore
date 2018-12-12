@@ -1,6 +1,7 @@
 *.pyc
 medium/staticfiles
 venv
+env
 medium/scrapy
 *.sqlite3
 medium/media

@@ -45,6 +45,8 @@ class Artigo(models.Model):
     id_artigo_lei = models.IntegerField('Artigo Lei', blank=True, null=True)
 
     lei = models.ForeignKey(Lei, on_delete=models.CASCADE, verbose_name='Lei', related_name='artigos')
+    is_titulo = models.BooleanField('É título?', blank=True, default=False)
+
 
     created_at = models.DateTimeField(
         'Criado em', auto_now_add=True
