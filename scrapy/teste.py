@@ -7,7 +7,10 @@ from datetime import date, datetime
 with open('/app/scrapy/cfederal.html', 'rb') as f:
     soup = BeautifulSoup(f, 'lxml')
     
-conn = sqlite3.connect('../db.sqlite3', check_same_thread=False)
+#conn = sqlite3.connect('../db.sqlite3', check_same_thread=False)
+conn = psycopg2.connect('postgres://gumpusaddqrkcg:3894ca3d0276a4ed486e2435681c8da47bd6eae270322a5a4b532ad320f4cc80@ec2-54-235-156-60.compute-1.amazonaws.com:5432/d2p9n2h48bq3sj', check_same_thread=False)
+
+
 curs = conn.cursor()
 for string in soup.stripped_strings: #remove espaços em branco    
     #print(string)
