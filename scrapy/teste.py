@@ -14,7 +14,8 @@ conn = psycopg2.connect('postgres://gumpusaddqrkcg:3894ca3d0276a4ed486e2435681c8
 curs = conn.cursor()
 for string in soup.stripped_strings: #remove espaços em branco    
     #print(string)
-    curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei) values (?, ?, ?, ?, ?)", (string, date.today(), date.today(),  '1' , '1'))
+    #curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei) values (?, ?, ?, ?, ?)", (string, date.today(), date.today(),  '1' , '1'))
+    curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei) values (%s, %s, %s, %s, %s)", (string, date.today(), date.today(),  '1' , '1'))
 conn.commit()
 
 
