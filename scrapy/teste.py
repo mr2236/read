@@ -1,4 +1,4 @@
-import requests, sqlite3
+import requests, sqlite3, psycopg2
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString, Tag
 from datetime import date, datetime
