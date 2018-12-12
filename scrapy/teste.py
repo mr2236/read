@@ -1,3 +1,6 @@
+
+#>heroku run python scrapy/teste.py --remote master
+
 import requests, sqlite3, psycopg2
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString, Tag

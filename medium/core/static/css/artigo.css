@@ -84,3 +84,14 @@ span.nota{
     background-color: #f9f8f8;
     
 }
+
+.artigo_titulo{
+    font-weight: bold;
+    display: block;
+    margin: 10px 0px 10px 0px;
+    text-align: center    
+}
+
+.row-artigo{
+    font-size: 14px !important
+}

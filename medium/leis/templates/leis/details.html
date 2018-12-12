@@ -34,12 +34,13 @@
                         {% for artigo in artigos %}  
                         <div class="row row-artigo">
                           <div class="col-md-10 text-justify">
-                            <span class='artigo  {% if artigo.is_marcado %} highlight {%endif%}'  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}">                           
-                               {{artigo}}
+                            <span class='artigo {% if artigo.is_titulo %}artigo_titulo {%endif%}  {% if artigo.is_marcado %} highlight {%endif%}'  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}">                           
+                                    {{artigo|linebreaks}}
                             </span>
                           </div>
                           <div class="col-md-2 text-right">
                             <div class="botoes">
+                            {% if not artigo.is_titulo %}
                               <span class = "nota" data-nota-linha = "{{artigo.pk}}"  data-comentario=" {% if artigo.description %} {{artigo.description}}  {%endif%}"  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}" >
                                 <img class="fas fa-sticky-note glyph-icon{% if not artigo.description %} opacidade {%endif%}'"  /> 
                               </span>
@@ -48,6 +49,7 @@
                                 <span class='qtd-voto'>{% if artigo.votos %}{{artigo.votos}}{% else %}0{%endif%}</span>                           
                                 <span class='voto-down' data-tipo="0" data-comentario="{{artigo.description}}"  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}"><i class="fas fa-angle-down"></i></span>
                               </span>
+                            {% endif %}
                             </div> 
                          </div> 
                         </div>
