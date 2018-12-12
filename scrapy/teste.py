@@ -4,7 +4,7 @@ from bs4.element import NavigableString, Tag
 from datetime import date, datetime
 
 
-with open('./scrapy/cfederal.html', 'r') as f:
+with open('/app/scrapy/cfederal.html', 'r') as f:
     soup = BeautifulSoup(f, 'lxml')
     
 conn = sqlite3.connect('../db.sqlite3', check_same_thread=False)
