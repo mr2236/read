@@ -1,6 +1,19 @@
-import requests
+import requests, sqlite3
 from bs4 import BeautifulSoup
 from bs4.element import NavigableString, Tag
+from datetime import date, datetime
+
+
+with open('cfederal.html', 'r') as f:
+    soup = BeautifulSoup(f, 'lxml')
+    
+conn = sqlite3.connect('../db.sqlite3', check_same_thread=False)
+curs = conn.cursor()
+for string in soup.stripped_strings: #remove espaços em branco    
+    #print(string)
+    curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei) values (? , ?, ? , ?, ?)", (string, date.today(), date.today(),  '1' , 1))
+conn.commit()
+
 
 '''with open('cfederal.html', 'r') as f:
     soup_string = BeautifulSoup(f.read(), 'html.parser')
@@ -28,8 +41,8 @@ print(soup.a['name'])'''
 
 #print(soup.p.get_text())#traz o texto da tag p, mas apenas da primeira, nesse caso
 
-with open('cfederal.html', 'r') as f:
-    soup = BeautifulSoup(f, 'lxml')
+#with open('cfederal.html', 'r') as f:
+#    soup = BeautifulSoup(f, 'lxml')
 #print(soup.body.contents[15]) #acesso 15 elemento de body: id= art
 
 
@@ -47,9 +60,7 @@ for child in soup.body.contents[15].p.children:
 #print(len(list(soup.body))) 
 #print(len(list(soup.descendants))) #acessa todos os filhos dos filhos
 
-for tag in soup.descendants:
+'''for tag in soup.descendants:
     if isinstance(tag, NavigableString): #testa se é uma string, se for uma string, imprime a string
-        print(tag) #traz todos os textos de todos os elementos (filhos de filhos etc..)
+        print(tag) #traz todos os textos de todos os elementos (filhos de filhos etc..)'''
 
-for string in soup.stripped_strings: #remove espaços em branco    
-    print(string)
