@@ -11,12 +11,13 @@ with open('/app/scrapy/cfederal.html', 'rb') as f:
 conn = psycopg2.connect('postgres://gumpusaddqrkcg:3894ca3d0276a4ed486e2435681c8da47bd6eae270322a5a4b532ad320f4cc80@ec2-54-235-156-60.compute-1.amazonaws.com:5432/d2p9n2h48bq3sj')
 
 
-curs = conn.cursor()
+
 for string in soup.stripped_strings: #remove espaços em branco    
+    curs = conn.cursor()
     #print(string)
     #curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei) values (?, ?, ?, ?, ?)", (string, date.today(), date.today(),  '1' , '1'))
-    curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei) values (%s, %s, %s, %s, %s)", (string, date.today(), date.today(),  '1' , '1'))
-conn.commit()
+    curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei) values (%s, %s, %s, %s, %s)", (string, date.today(), date.today(),  '2' , '2'))
+    conn.commit()
 
 
 '''with open('cfederal.html', 'r') as f:
