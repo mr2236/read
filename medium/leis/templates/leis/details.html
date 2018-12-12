@@ -22,7 +22,7 @@
                         <a id="reset" >+ reset</a>                                              
                       </div>
                       
-                    </div>
+                   
                     <div class="mainheading">
                     <h1 class="posttitle">{{lei.name}}</h1>
 
@@ -33,12 +33,12 @@
                         
                         {% for artigo in artigos %}  
                         <div class="row row-artigo">
-                          <div class="col-md-10">
-                            <p class='artigo {% if artigo.is_marcado %} highlight {%endif%}'  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}">                           
-                                {{artigo}}                                   
-                            </p>
+                          <div class="col-md-10 text-justify">
+                            <span class='artigo  {% if artigo.is_marcado %} highlight {%endif%}'  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}">                           
+                               {{artigo}}
+                            </span>
                           </div>
-                          <div class="col-md-2">
+                          <div class="col-md-2 text-right">
                             <div class="botoes">
                               <span class = "nota" data-nota-linha = "{{artigo.pk}}"  data-comentario=" {% if artigo.description %} {{artigo.description}}  {%endif%}"  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}" >
                                 <img class="fas fa-sticky-note glyph-icon{% if not artigo.description %} opacidade {%endif%}'"  /> 

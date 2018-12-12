@@ -66,7 +66,7 @@ function exitHandler() {
 }  
 
 
-$("p.artigo").on("dblclick",(function(e){    
+$("span.artigo").on("dblclick",(function(e){    
     e.preventDefault();
     let artigo = $(this).data('artigo');
     let lei = $(this).data('lei');
@@ -243,6 +243,18 @@ $('body').on('click', 'button.btn-salvar-comentario, .btn-del-comentario', funct
 
 $('a#largura-conteudo').click(function () {  console.log('aas');
   $('#conteudo').toggleClass('largura-conteudo');
-
 });
+
+
+
+$(".row-artigo").mouseover(function() {
+  console.log('hover');
+  $(this).addClass("mousehoverout");
+});
+
+$(".row-artigo").mouseout(function() {  
+  console.log('out');
+  $(this).removeClass("mousehoverout");
+});
+
 

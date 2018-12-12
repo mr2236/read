@@ -19,5 +19,7 @@ urlpatterns = [
     path('editar/', editar, name='editar'),
     path('editar-senha/', editar_password, name='editar_password'),
   ]
+#path('confirme-nova-senha/<str:key>
+
 
 

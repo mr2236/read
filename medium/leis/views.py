@@ -48,12 +48,13 @@ def details(request, pk):
         votos=(F('marcacaoLei__votos'))
     )      
     ).order_by('created_at')
-
+    print(artigos.query)
     
     context = {
         'artigos': artigos,
         'lei': lei,        
     }
+  
     template_name = 'leis/details.html'
     return render(request, template_name, context)
 
