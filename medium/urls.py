@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include(('medium.core.urls', 'core'), namespace='core')),
     path('leis/', include(('medium.leis.urls', 'leis'), namespace='leis')),
     path('conta/', include(('medium.accounts.urls', 'accounts'), namespace='accounts')),
+    path('pacotes/', include(('medium.pacotes.urls', 'pacotes'), namespace='pacotes')),
     path('admin/', admin.site.urls),
     #path('api/', include(api_patterns)),
 ]

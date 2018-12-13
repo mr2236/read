@@ -1,0 +1,65 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+      
+        <!-- Begin Article
+        ================================================== -->
+        <div class="container">
+            <div class="row">
+       
+                <!-- Begin Post -->
+                <div class="col-md-12" id="conteudo">
+                    
+                    <div class="mainheading">
+                    <h1 class="posttitle">{{pacote.name}}</h1>
+                    <a href="{% url 'pacotes:inscricao'  pk=pacote.id %}">ideiaX</a>
+
+
+                    </div>
+                    <!-- Begin Post Content -->
+                    <div id="container-artigos" >
+                    <div class="article-post" > 
+                        
+                       {{pacote.description}}
+                    </div>
+                    <!-- End Post Content -->
+        
+                    
+                </div>
+                <!-- End Post -->
+               
+            </div>
+        </div>
+        <!-- End Article
+        ================================================== -->
+
+<!-- Modal -->
+
+<div class="modal right fade"  id="modelComentario" tabindex="-1" role="dialog" aria-labelledby="myModal2Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModal2Label">Comentário</h4>
+        </div>
+        <div class="modal-body">
+            <textarea class="form-control estilo" rows="10" cols="50" id="comment" required="required"></textarea>
+                   
+                      
+        </div>
+        <div class="modal-footer">          
+          <a class="btn-del-comentario" href="#">delete</a>
+          <button type="button"  class="btn btn-default btn-fechar-comentario" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary btn-salvar-comentario">Salvar</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  
+
+{% endblock %}lei

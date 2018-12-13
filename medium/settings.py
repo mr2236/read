@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'medium.accounts',
     'medium.core',
     'medium.leis',     
+    'medium.pacotes',   
 
 ]
 
