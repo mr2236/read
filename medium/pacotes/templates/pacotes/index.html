@@ -9,10 +9,10 @@
            
         <!-- Begin List Posts
         ================================================== -->
-        {% if request.user.is_authenticated %}
+       
         <section class="recent-posts">
         <div class="section-title">
-            <h2><span>Suas leis</span></h2>
+            <h2><span>Nossos Pacotes</span></h2>
         </div>
         <div class="card-columns listrecent">
             
@@ -31,6 +31,8 @@
                         <h2 class="card-title"><a href="{% url 'pacotes:details'  pk=pacote.id %}"> {{pacote.name}}</a></h2>
                         <h4 class="card-text"><a href="{% url 'pacotes:details'  pk=pacote.id %}">{{pacote.description|linebreaks}}</a></h4>
                         
+                        
+
                         <div class="metafooter">
                             <div class="wrapfooter">
                                 <span class="meta-footer-thumb">
@@ -50,7 +52,7 @@
         {% endfor %}
     
         </div>
-         {% endif %}
+       
         </section>
         <!-- End List Posts
         ================================================== -->

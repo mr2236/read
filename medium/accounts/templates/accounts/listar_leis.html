@@ -6,17 +6,18 @@
 {% block dashboard_content %}
 
 <div class="container">
-        <h5 id="painel-titulo">{{pacote.name}}</h5>
-        {{pacote.description}}
-        <div class="row">
+        {% comment %} <h5 id="painel-titulo">{{pacote.name}}</h5>
+        {{pacote.description}} {% endcomment %}
+
+         <div class="section-title" id="painel-titulo">
+              <h2><span>{{pacote.name}}</span></h2>
+          </div>
+          <p>{{pacote.description}}</p>
+        <div class="row p-3">
             {% for lei in leis %}        
                 <a href="{% url 'leis:details'  pk=lei.id %}" class="list-group-item list-group-item-action">{{lei.name}}</a>
             {% endfor %}
-            
-                
-                        
-         
         </div>
-    </div>
+</div>
 
 {% endblock%}

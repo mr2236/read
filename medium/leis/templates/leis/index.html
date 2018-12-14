@@ -9,18 +9,13 @@
            
         <!-- Begin List Posts
         ================================================== -->
-        {% if request.user.is_authenticated %}
+        {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
         <section class="recent-posts">
         <div class="section-title">
-            <h2><span>Suas leis</span></h2>
+            <h2><span>Leis em destaque</span></h2>
         </div>
         <div class="card-columns listrecent">
-            {% for pacote in pacotes %}
-                {% for lei in pacote.leis.all %}            
-
-                    {{pacote.name}} -
-                    {{lei.name}}
-               
+            {% for lei in leis_destaque %}                
           
             <!-- begin post -->
             <div class="card">
@@ -50,10 +45,10 @@
             </div>
             <!-- end post -->
             
-        {% endfor %}
+        
         {% endfor %}
         </div>
-         {% endif %}
+         {% comment %} {% endif %} {% endcomment %}
         </section>
         <!-- End List Posts
         ================================================== -->

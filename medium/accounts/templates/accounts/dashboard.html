@@ -21,8 +21,8 @@
                             
                         <div id="painel-menu-content">
                         <ul class="nav navbar-nav">
-                        <span class="painel-menu-titulo">Meus Cursos</span>         asdf 
-                        {% for pacote in pacotes %}
+                        <span class="painel-menu-titulo">Meus Cursos</span>
+                        {% for pacote in pacotes_menu %}
                             <li><a href="{% url 'accounts:listar_leis' pk=pacote.id %}">{{pacote.name}}</a></li>                            
                         {% endfor %}    
                         </ul>
@@ -40,9 +40,12 @@
             
                     <!-- Begin Post -->
                     <div class="col-md-8 col-md-offset-2 col-xs-12" id="painel-conteudo">                            
-                                                                
+                                                   
                         <div class="">
                                 {%block dashboard_content%}
+                                <div class="section-title" id="painel-titulo">
+                                    <h2><span>Dados pessoais</span></h2>
+                                </div>  
                                 Nome de usuario: {{request.user}}<br/>
                                 Email: {{request.user.email}}<br/>
                                 Data de cadastro no site: {{request.user.date_joined}}

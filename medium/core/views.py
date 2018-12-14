@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from ..leis.models import Lei
+from ..pacotes.models import Pacote
 from .forms import ContatoAdmin
 
 
 # Create your views here.
 def home(request):
     leis = Lei.objects.all()
+    pacotes = Pacote.objects.all()
     template_name = 'home.html'
     context = {
-        'leis': leis
+        'leis': leis,
+        'pacotes': pacotes,
     }
     return render(request, template_name, context)
 

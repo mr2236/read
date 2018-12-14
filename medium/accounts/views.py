@@ -14,9 +14,9 @@ User = get_user_model
 
 @login_required
 def dashboard(request):
-    pacotes = Pacote.objects.filter(inscricao__user_id = request.user.id)       
+    pacotes_menu = Pacote.objects.filter(inscricao__user_id = request.user.id)       
     context = {
-        'pacotes': pacotes,        
+        'pacotes_menu': pacotes_menu,        
     }    
     template_name='accounts/dashboard.html'
     return render(request, template_name, context)
@@ -24,8 +24,9 @@ def dashboard(request):
 @login_required
 def listar_leis(request, pk):
     pacotes = Pacote.objects.get(id = pk)     
-    print(pacotes)  
+    pacotes_menu = Pacote.objects.filter(inscricao__user_id = request.user.id)       
     context = {
+        'pacotes_menu': pacotes_menu,        
         'leis': pacotes.leis.all(), 
         'pacote': pacotes,
     }    
@@ -35,8 +36,11 @@ def listar_leis(request, pk):
 
 @login_required
 def editar(request):
-    template_name='accounts/editar.html'    
-    context = {}
+    template_name='accounts/editar.html'        
+    pacotes_menu = Pacote.objects.filter(inscricao__user_id = request.user.id)       
+    context = {
+        'pacotes_menu': pacotes_menu,        
+    } 
     form = EditarAccountForm(instance=request.user)
     if request.method == 'POST':
         form = EditarAccountForm(request.POST, instance=request.user)
@@ -68,8 +72,11 @@ def register(request):
 
 @login_required
 def editar_password(request):
-    template_name= 'accounts/editar_password.html'
-    context = {}
+    template_name= 'accounts/editar_password.html'    
+    pacotes_menu = Pacote.objects.filter(inscricao__user_id = request.user.id)       
+    context = {
+        'pacotes_menu': pacotes_menu,        
+    } 
     form = PasswordChangeForm(user=request.user)
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
