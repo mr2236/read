@@ -9,7 +9,7 @@ from datetime import date, datetime
 conn = psycopg2.connect('postgres://gumpusaddqrkcg:3894ca3d0276a4ed486e2435681c8da47bd6eae270322a5a4b532ad320f4cc80@ec2-54-235-156-60.compute-1.amazonaws.com:5432/d2p9n2h48bq3sj')
 
 #with open('cfederal.html', 'rb') as f:
-with open('/app/scrapy/cfederal.html', 'rb') as f:
+with open('/app/scrapy/Constituição Federal/cfederal.html', 'rb') as f:    
     soup = BeautifulSoup(f, 'html.parser')
 for tag in soup.findAll():
     if tag.name in ['a', 'strike']:
