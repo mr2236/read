@@ -4,7 +4,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from medium.accounts.views import register
 from django.contrib.auth.views import LogoutView
-from medium.accounts.views import dashboard, editar,editar_password,password_reset,password_reset_confirm
+from medium.accounts.views import dashboard, editar,editar_password,password_reset,password_reset_confirm, listar_leis
 
 
 
@@ -18,6 +18,7 @@ urlpatterns = [
     path('confirmar-nova-senha/<key>/', password_reset_confirm, name='password_reset_confirm'),
     path('editar/', editar, name='editar'),
     path('editar-senha/', editar_password, name='editar_password'),
+    path('listar-leis/<int:pk>', listar_leis, name='listar_leis'),
   ]
 #path('confirme-nova-senha/<str:key>
 

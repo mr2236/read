@@ -1,0 +1,41 @@
+#painel-menu{
+    border: 0.5px #e6e4e4 solid;
+    text-align: center;
+    padding-top:5px;
+    margin-right: 10px
+}
+
+#painel-menu-content{
+    text-align: left;
+    padding: 10px
+
+}
+
+#painel-menu a{
+    font-size: 14px;
+}
+.painel-menu-titulo{
+    font-size:14px;
+    font-weight: bold;
+    color: gray;   
+}
+
+#painel-conteudo{
+    border: 0.5px #e6e4e4 solid;    
+    padding-top:5px;
+    font-size: 14px !important;
+}
+
+#breadcrumb{
+    padding: 10px;
+    font-size: 14px
+
+}
+
+#painel-titulo{
+    font-size:24px;
+    font-weight: bold;
+    color: black;   
+    text-align: center;
+    padding:10px
+}

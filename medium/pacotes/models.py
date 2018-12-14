@@ -10,8 +10,8 @@ class Pacote(models.Model):
     slug = models.SlugField('Atalho')
     description = models.TextField('Descrição', blank = True, null=True)
     ativo = models.BooleanField('Está ativo?', blank = True, default= False)
-    lei = models.ForeignKey(Lei, on_delete=models.CASCADE, verbose_name="Lei", related_name="lei", default=0)
-    
+    #lei = models.ForeignKey(Lei, on_delete=models.CASCADE, verbose_name="Lei", related_name="lei", default=0)
+    leis = models.ManyToManyField(Lei, related_name='lei_pacote')
     image = models.ImageField(
         upload_to='pacotes/images', verbose_name='Imagem',
         null=True, blank=True

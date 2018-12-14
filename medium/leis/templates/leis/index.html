@@ -15,9 +15,13 @@
             <h2><span>Suas leis</span></h2>
         </div>
         <div class="card-columns listrecent">
-            
-            {% for lei in leis %}            
-           
+            {% for pacote in pacotes %}
+                {% for lei in pacote.leis.all %}            
+
+                    {{pacote.name}} -
+                    {{lei.name}}
+               
+          
             <!-- begin post -->
             <div class="card">
                 <!--a href="post.html">
@@ -47,7 +51,7 @@
             <!-- end post -->
             
         {% endfor %}
-    
+        {% endfor %}
         </div>
          {% endif %}
         </section>

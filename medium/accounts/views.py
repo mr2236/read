@@ -7,13 +7,31 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
 #from medium.core.utils import generate_hash_key
 from .models import PasswordReset
+from ..pacotes.models import Inscricao, Pacote
+
 
 User = get_user_model
 
 @login_required
 def dashboard(request):
+    pacotes = Pacote.objects.filter(inscricao__user_id = request.user.id)       
+    context = {
+        'pacotes': pacotes,        
+    }    
     template_name='accounts/dashboard.html'
-    return render(request, template_name)
+    return render(request, template_name, context)
+
+@login_required
+def listar_leis(request, pk):
+    pacotes = Pacote.objects.get(id = pk)     
+    print(pacotes)  
+    context = {
+        'leis': pacotes.leis.all(), 
+        'pacote': pacotes,
+    }    
+    template_name='accounts/listar_leis.html'
+    return render(request, template_name, context)
+
 
 @login_required
 def editar(request):

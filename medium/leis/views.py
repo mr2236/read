@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Lei, Artigo, Marcacao
+from ..pacotes.models import Inscricao, Pacote
 from ..accounts.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -8,16 +9,51 @@ from django.db.models import Exists, OuterRef, F, Max, Sum
 
 
 def index(request):
-    leis = {}
+    pacote = {}
 
     leis_all = Lei.objects.all()    
     if request.user.is_authenticated:
         user = User.objects.get(id= request.user.id)    
-        leis = Lei.objects.filter( marcacaoArtigos__usuario= user ).distinct()
+        #leis = Lei.objects.filter( marcacaoArtigos__usuario= user ).distinct()
+        pacote = Pacote.objects.filter(inscricao__user_id = request.user.id)    
+        lei = get_object_or_404(Lei, pk=pk)    
+        
+        leis = (
+        Lei
+        .objects
+        .filter(lei=pk)
+        .annotate(
+            is_marcado=Exists(
+                Marcacao
+                .objects
+                .filter(
+                    artigo_id=OuterRef('id'),
+                    usuario=request.user,
+                    is_marcado=1,
+                )
+            )
+            )
+        .annotate(
+            description=(F('marcacaoLei__description'))    
+        ).annotate(
+            votos=(F('marcacaoLei__votos'))
+        )      
+        ).order_by('id')
+        #pacote
+        #leis = Lei.objects.filter(inscricao__pacote_id = pacote.id)
+        #print(leis)
+        #print(pacote.query)
+       # print(pacote[0].leis)
+        #print(pacote.name)
+       # leis = Pacote.leis.filter(pacote)
+      #  leis = pacote.leis.all()
+
+        #print(leis)
 
     template_name = 'leis/index.html'
     context = {
-        'leis': leis,
+        'pacotes': pacote,
+        #'leis':leis,
         'leis_all': leis_all
     }
     return render(request, template_name, context)

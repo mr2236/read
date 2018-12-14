@@ -12,7 +12,9 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):    
     pacotes = Pacote.objects.all()      
+
     template_name = 'pacotes/index.html'
+
     context = {
         'pacotes': pacotes,        
     }
@@ -20,10 +22,13 @@ def index(request):
 
 def details(request, pk):
     pacote = get_object_or_404(Pacote, pk=pk)    
+    leis = pacote.leis.all()
+    print(leis)
     
     template_name = 'pacotes/details.html'
     context = {
-        'pacote': pacote,        
+        'pacote': pacote,
+        'leis': leis,
     }
     return render(request, template_name, context)
 

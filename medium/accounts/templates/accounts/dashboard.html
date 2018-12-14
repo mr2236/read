@@ -1,43 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
   <!-- Begin Article
+    
         ================================================== -->
         <div class="container">
-
-
-                <div class="row">            
+                <div class="row"> 
+                <div id="breadcrumb">
+                        {% block breadcrumb%}
+                            <a href="{% url 'accounts:dashboard' %}">Meu Painel</a>
+                        {% endblock%}
+                </div>         
+            </div>
+                <div class="row ">      
+                          
                     <!-- Begin Fixed Left Share -->
-                    <div class="col-md-2 col-xs-12">
+                    <div class="col-md-2 col-xs-12" id="painel-menu">
                         
-                        <!--h5>Meu Painel</h5>                        
-                        <ul>
-                            <li><a href="#">Lei</a></li>                            
-                            <li><a href="#">Lei</a></li>
-                            <li><a href="#">Lei</a></li>
+                        <span class="painel-menu-titulo">Bem vindo, {{request.user.username}}!</span>  
+                        <div class="dropdown-divider"></div>
+                            
+                        <div id="painel-menu-content">
+                        <ul class="nav navbar-nav">
+                        <span class="painel-menu-titulo">Meus Cursos</span>         asdf 
+                        {% for pacote in pacotes %}
+                            <li><a href="{% url 'accounts:listar_leis' pk=pacote.id %}">{{pacote.name}}</a></li>                            
+                        {% endfor %}    
                         </ul>
-                        <hr/-->
-                        <h5>Minha Conta</h5>
+                        <hr>                        
+                        <span class="painel-menu-titulo">Minha Conta</span>                        
                        
-                        <ul>
+                        <ul class="nav navbar-nav">
                             <li><a href="{% url 'accounts:editar' %}">Editar Conta</a></li>                            
                             <li><a href="{% url 'accounts:editar_password' %}">Alterar Senha</a></li>                            
                         </ul>
-                       
+                       </div>
                     </div>
 
                     <!-- End Fixed Left Share -->
             
                     <!-- Begin Post -->
-                    <div class="col-md-8 col-md-offset-2 col-xs-12">                            
-                            <div id="breadcrumb">
-                                    {% block breadcrumb%}
-                                        <a href="{% url 'accounts:dashboard' %}">Meu Painel</a>
-                                    {% endblock%}
-                            </div>
-                        <div class="mainheading">
-                            <h1 class="posttitle"> </h1>            
-                        </div>                        
-                        <div class="article-post">
+                    <div class="col-md-8 col-md-offset-2 col-xs-12" id="painel-conteudo">                            
+                                                                
+                        <div class="">
                                 {%block dashboard_content%}
                                 Nome de usuario: {{request.user}}<br/>
                                 Email: {{request.user.email}}<br/>

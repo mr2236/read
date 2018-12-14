@@ -1,0 +1,22 @@
+{% extends 'accounts/dashboard.html' %}
+{% block breadcrumb%}
+    {{block.super}}
+    > Cursos > {{pacote.name}} 
+{% endblock%}
+{% block dashboard_content %}
+
+<div class="container">
+        <h5 id="painel-titulo">{{pacote.name}}</h5>
+        {{pacote.description}}
+        <div class="row">
+            {% for lei in leis %}        
+                <a href="{% url 'leis:details'  pk=lei.id %}" class="list-group-item list-group-item-action">{{lei.name}}</a>
+            {% endfor %}
+            
+                
+                        
+         
+        </div>
+    </div>
+
+{% endblock%}

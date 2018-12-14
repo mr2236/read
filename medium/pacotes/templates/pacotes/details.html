@@ -23,6 +23,16 @@
                     <div class="article-post" > 
                         
                        {{pacote.description}}
+
+                   
+
+                      {% for lei in leis %}
+                        {{lei.name}}
+
+
+                       {% endfor %}
+
+
                     </div>
                     <!-- End Post Content -->
         
@@ -62,4 +72,4 @@
   <!-- /.modal -->
   
 
-{% endblock %}lei
+{% endblock %}
