@@ -66,8 +66,14 @@
 
           {% for pacote in pacotes %}
             <div class="card">
-                <a href="post.html">
-                    <img class="img-fluid" src="" alt="">
+                
+                    
+                {% if pacote.image %}
+                    <a href="{% url 'pacotes:details'  pk=pacote.id %}"><img class="img-fluid" src="{{ pacote.image.url }}" alt="{{pacote.name}}" style="width:100%"></a>
+                {% endif %}
+                    
+
+
                 </a>
                 <div class="card-block">                    
                     <h2 class="card-title"><a href="{% url 'pacotes:details'  pk=pacote.id %}"> {{pacote.name}}</a></h2>
