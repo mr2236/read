@@ -32,7 +32,7 @@ for p in allp:
              result = p.text.replace('\n', ' ')#.replace(nonBreakSpace, '')  
         print(result)
         #curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei, is_titulo) values (?, ?, ?, ?, ?, ?)", (result, date.today(), date.today(),  '2' , i, is_titulo))
-        curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei, is_titulo) values (%s, %s, %s, %s, %s, %s)", (result, date.today(), date.today(),  '1' , i, is_titulo))
+        curs.execute("INSERT INTO leis_artigo ( artigo, created_at, updated_at, lei_id, id_artigo_lei, is_titulo) values (%s, %s, %s, %s, %s, %s)", (result, date.today(), date.today(),  '2' , i, is_titulo))
 
         is_titulo = False
         i = i+1 
