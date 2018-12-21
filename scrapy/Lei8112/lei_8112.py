@@ -8,8 +8,8 @@ from datetime import date, datetime
 #conn = sqlite3.connect('../../db.sqlite3', check_same_thread=False)
 conn = psycopg2.connect('postgres://gumpusaddqrkcg:3894ca3d0276a4ed486e2435681c8da47bd6eae270322a5a4b532ad320f4cc80@ec2-54-235-156-60.compute-1.amazonaws.com:5432/d2p9n2h48bq3sj')
 
-#with open('lei_8112.html', 'rb') as f:
-with open('/app/scrapy/Lei8112/lei_8112.html', 'rb') as f:
+#with open('lei_8112.html','r+', encoding='utf-8') as f:
+with open('/app/scrapy/Lei8112/lei_8112.html', 'r+', encoding='utf-8') as f:
     soup = BeautifulSoup(f, 'html.parser')
 for tag in soup.findAll():
     if tag.name in ['a', 'strike']:
