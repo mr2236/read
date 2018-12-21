@@ -11,7 +11,9 @@ $('body').on('click', 'span.nota', function() {
     $(".btn-del-comentario").attr('data-usuario', $(this).data('usuario'));   
 
     
-    $('#comment').val(this.getAttribute('data-comentario'));
+    CKEDITOR.instances['comment'].setData(decodeURIComponent(this.getAttribute('data-comentario')));
+
+    //CKEDITOR.instances.comment.getData()
 
 
     //$(".btn-salvar-comentario").attr('data-comentario', $(this).data('comentario')); //atribui ao botao 

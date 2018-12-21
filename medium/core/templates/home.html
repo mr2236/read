@@ -77,7 +77,7 @@
                 </a>
                 <div class="card-block">                    
                     <h2 class="card-title"><a href="{% url 'pacotes:details'  pk=pacote.id %}"> {{pacote.name}}</a></h2>
-                    <h4 class="card-text">{{pacote.description}}</h4>
+                    <h4 class="card-text"><a href="{% url 'pacotes:details'  pk=pacote.id %}">{{pacote.description}}</a></h4>
                     <div class="metafooter">
                         <div class="wrapfooter">
                             <span class="meta-footer-thumb">

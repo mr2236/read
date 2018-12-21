@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'medium.core',
     'medium.leis',     
     'medium.pacotes',   
+    'django_wysiwyg',
+    'ckeditor',
 
 ]
 
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+DJANGO_WYSIWYG_FLAVOR = "ckeditor"
 
 ROOT_URLCONF = 'medium.urls'
 
@@ -140,3 +143,15 @@ LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_URL = 'accounts:logout'
 AUTH_USER_MODEL  = 'accounts.User'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source']
+        ]
+    }
+}

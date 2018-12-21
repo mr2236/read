@@ -114,8 +114,8 @@ $('body').on('click', 'button.btn-fechar-comentario', function() {
 });
 
 $('body').on('click', 'button.btn-salvar-comentario, .btn-del-comentario', function() {    
-    
-    let comentario =  $('#comment').val();  
+   
+    let comentario = encodeURIComponent(CKEDITOR.instances.comment.getData());  
     
     if ($(this).html() == 'delete'){        
         comentario = 'comentario_delete';
@@ -126,20 +126,8 @@ $('body').on('click', 'button.btn-salvar-comentario, .btn-del-comentario', funct
     let lei = $(this).data('lei');
     let usuario = $(this).data('usuario');    
     let nota = ($('span.nota[data-artigo="'+ artigo + '"]'));
-    
-    
-    
-    //let comment_html = $(this).parents().parents().find('#comment');
-    //let btn = $('.btn-salvar-comentario');
-    //console.log(btn.html())
-    // console.log($(this).parents().parents().html());
-    
-    // console.log(artigo);
-    // console.log(lei);
-    // console.log(usuario);    
-    // console.log(comentario);
 
-    var urlRequest = '/leis/marcacao-nota/' + lei + '/' + artigo + '/' + usuario + '/' + comentario;
+    var urlRequest = '/leis/marcacao-nota/' + lei + '/' + artigo + '/' + usuario + '/' + encodeURIComponent(comentario);
    
     console.log(urlRequest);
     $.ajax({        
@@ -249,12 +237,10 @@ $('a#largura-conteudo').click(function () {  console.log('aas');
 
 
 $(".row-artigo").mouseover(function() {
-  console.log('hover');
   $(this).addClass("mousehoverout");
 });
 
 $(".row-artigo").mouseout(function() {  
-  console.log('out');
   $(this).removeClass("mousehoverout");
 });
 

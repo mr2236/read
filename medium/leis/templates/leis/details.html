@@ -2,6 +2,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load wysiwyg %}
+{% wysiwyg_setup %}
 <div class="container">
       
         <!-- Begin Article
@@ -80,7 +82,8 @@
         </div>
         <div class="modal-body">
             <textarea class="form-control estilo" rows="10" cols="50" id="comment" required="required"></textarea>
-                   
+            {% wysiwyg_editor "comment" %}
+
                       
         </div>
         <div class="modal-footer">          

@@ -11,10 +11,11 @@ body {
 	padding:1rem 0rem;
 }
 a {
-	color:#00ab6b;
+	color:#000000;
 }
 a,a:hover {
 	transition:all 0.2s;
+	text-decoration: none;
 }
 .mediumnavigation {
 	background:rgba(255,255,255,.97);
