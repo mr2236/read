@@ -2,8 +2,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-{% load wysiwyg %}
-{% wysiwyg_setup %}
 <div class="container">
       
         <!-- Begin Article
@@ -34,29 +32,30 @@
                     <div class="article-post" > 
                         
                         {% for artigo in artigos %}  
+                       {% comment %} {{artigo.0}} - {{artigo.1}} -{{artigo.2}}- {{artigo.3}}- {{artigo.4}}- {{artigo.5}}- {{artigo.6}}- {{artigo.7}}- {{artigo.8}} {% endcomment %}
                         <div class="row row-artigo">
                           <div class="col-md-10 text-justify">
-                            <span class='artigo {% if artigo.is_marcado %} highlight {%endif%} {% if artigo.is_titulo %}artigo_titulo{%endif%}'  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}">                           
-                                    {% if artigo.is_titulo %} {{artigo|linebreaks}}
-                                    {%else %}{{artigo}}
+                            <span class='artigo {% if artigo.4 %} highlight {%endif%} {% if artigo.3 %}artigo_titulo{%endif%}'  data-artigo = "{{artigo.0}}" data-lei = "{{artigo.1}}" data-usuario = "{{artigo.7}}">                           
+                                    {% if artigo.3 %} {{artigo.2|linebreaks}}
+                                    {%else %}{{artigo.2}}
                                     {%endif%}
                             </span>
                           </div>
                           <div class="col-md-2 text-right">
                             <div class="botoes">
-                            {% if not artigo.is_titulo %}
-                              <span class = "nota" data-nota-linha = "{{artigo.pk}}"  data-comentario=" {% if artigo.description %} {{artigo.description}}  {%endif%}"  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}" >
-                                <img class="fas fa-sticky-note glyph-icon{% if not artigo.description %} opacidade {%endif%}'"  /> 
+                            {% if not artigo.3 %}
+                              <span class = "nota" data-nota-linha = "{{artigo.0}}"  data-comentario=" {% if artigo.8  %} {{artigo.8}}  {%endif%}"  data-artigo = "{{artigo.0}}" data-lei = "{{artigo.1}}" data-usuario = "{{artigo.7}}" >
+                                <img class="fas fa-sticky-note glyph-icon{% if not artigo.8 %} opacidade {%endif%}'"  /> 
                               </span>
-                              <span class = "voto" data-linha = "{{artigo.pk}}"  >
-                                <span class='voto-up' data-tipo="1"  data-comentario="{{artigo.description}}"  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}"><i class="fas fa-angle-up"></i></span>
+                              <span class = "voto" data-linha = "{{artigo.0}}"  >
+                                <span class='voto-up' data-tipo="1"  data-comentario="{{artigo.8}}"  data-artigo = "{{artigo.0}}" data-lei = "{{artigo.1}}" data-usuario = "{{artigo.7}}"><i class="fas fa-angle-up"></i></span>
                                 <span class='qtd-voto'>{% if artigo.votos %}{{artigo.votos}}{% else %}0{%endif%}</span>                           
-                                <span class='voto-down' data-tipo="0" data-comentario="{{artigo.description}}"  data-artigo = "{{artigo.pk}}" data-lei = "{{lei.pk}}" data-usuario = "{{user.pk}}"><i class="fas fa-angle-down"></i></span>
+                                <span class='voto-down' data-tipo="0" data-comentario="{{artigo.8}}"  data-artigo = "{{artigo.0}}" data-lei = "{{artigo.1}}" data-usuario = "{{artigo.7}}"><i class="fas fa-angle-down"></i></span>
                               </span>
                             {% endif %}
                             </div> 
                          </div> 
-                        </div>
+                        </div> 
                         {% endfor %}
                     </div>
                     </div>
@@ -82,8 +81,7 @@
         </div>
         <div class="modal-body">
             <textarea class="form-control estilo" rows="10" cols="50" id="comment" required="required"></textarea>
-            {% wysiwyg_editor "comment" %}
-
+                   
                       
         </div>
         <div class="modal-footer">          

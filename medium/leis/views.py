@@ -7,6 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .forms import MarcacaoForm
 from django.db.models import Exists, OuterRef, F, Max, Sum
 from django.contrib.auth.decorators import login_required, permission_required
+from django.db import connection
+
 
 
 
@@ -27,33 +29,45 @@ def index(request):
 #retorna artigos da lei pk
 @login_required
 def details(request, pk):
-    lei = get_object_or_404(Lei, pk=pk)    
-    artigos = Artigo.objects.filter(lei=pk)    
-    artigos = (
-    Artigo
-    .objects
-    .filter(lei=pk)
-    .annotate(
-        is_marcado=Exists(
-            Marcacao
-            .objects
-            .filter(
-                artigo_id=OuterRef('id'),
-                usuario=request.user,
-                is_marcado=1,
-            )
-           )
-        )
-    .annotate(
-        description=(F('marcacaoLei__description'))    
-    ).annotate(
-        votos=(F('marcacaoLei__votos'))
-    )      
-    ).order_by('id')
-    print(artigos.query)
+    lei = get_object_or_404(Lei, pk=pk) 
+    print(lei.id)   
+    print(request.user.id)
+    artigos = Artigo.objects.filter(lei=pk)
+   
+    cursor = connection.cursor()
+    cursor.execute('''select leis_artigo.id, leis_artigo.lei_id,  leis_artigo.artigo, leis_artigo.is_titulo, 
+    leis_marcacao.is_marcado, leis_marcacao.description, leis_marcacao.votos, accounts_user.id , leis_marcacao.description from leis_artigo 
+                       inner join accounts_user 
+                       left join leis_marcacao ON leis_marcacao.artigo_id = leis_artigo.id and leis_marcacao.usuario_id = accounts_user.id 
+                       where leis_artigo.lei_id = %s and accounts_user.id = %s;''', [lei.id, request.user.id])
+    data = cursor.fetchall()
+
+   
+    # artigos = (
+    # Artigo
+    # .objects
+    # .filter(lei=pk)
+    # .annotate(
+    #     is_marcado=Exists(
+    #         Marcacao
+    #         .objects
+    #         .filter(
+    #             artigo_id=OuterRef('id'),
+    #             usuario=request.user,
+    #             is_marcado=1,
+    #         )
+    #        )
+    #     )
+    # .annotate(
+    #     description=(F('marcacaoLei__description'))    
+    # ).annotate(
+    #     votos=(F('marcacaoLei__votos'))
+    # )      
+    # ).order_by('id')
+    # print(artigos.query)
     
     context = {
-        'artigos': artigos,
+        'artigos': data,
         'lei': lei,        
     }
   
