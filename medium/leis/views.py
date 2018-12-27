@@ -39,7 +39,7 @@ def details(request, pk):
     leis_marcacao.is_marcado, leis_marcacao.description, leis_marcacao.votos, accounts_user.id , leis_marcacao.description from leis_artigo 
                        left join accounts_user on accounts_user.id = %s
                        left join leis_marcacao ON leis_marcacao.artigo_id = leis_artigo.id and leis_marcacao.usuario_id = accounts_user.id 
-                       where leis_artigo.lei_id = %s ;''', [lei.id, request.user.id])
+                       where leis_artigo.lei_id = %s ORDER BY leis_artigo.id asc;''', [lei.id, request.user.id])
     data = cursor.fetchall()
 
    
