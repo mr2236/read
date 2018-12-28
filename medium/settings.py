@@ -24,7 +24,7 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['leie.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['leie.herokuapp.com', '127.0.0.1','leie.com.br','www.leie.com.br']
 
 
 # Application definition
