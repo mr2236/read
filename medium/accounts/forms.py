@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 from medium.core.mail import send_mail_template
 from medium.core.utils import generate_hash_key
+from django.conf import settings
 
 from .models import PasswordReset
 
@@ -50,12 +51,20 @@ class RegisterForm(forms.ModelForm):
         user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password1'])        
         if commit:
+            template_name = 'accounts/boas_vindas_mail.html'
+            subject = 'Bem vindo(a) ao Lei-e!'
+            context = {
+             'name': user.username,
+            }            
+            send_mail_template(subject, template_name, context,  [user.email])
             user.save()
         return user
         
     class Meta:
         model = User
         fields = ['username','email']
+
+    
 
 class EditarAccountForm(forms.ModelForm):
 

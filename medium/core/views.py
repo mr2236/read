@@ -22,6 +22,7 @@ def contato(request):
         if form.is_valid():
             context['is_valid'] = True
             print(form.cleaned_data)
+            form.send_mail()
             form = ContatoAdmin()
     else:
         form = ContatoAdmin()

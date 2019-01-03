@@ -61,7 +61,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             user = authenticate(username=user.username, password=form.cleaned_data['password1'])
-            login(request, user)
+            login(request, user)            
             return redirect('core:home')
     else:
         form = RegisterForm()

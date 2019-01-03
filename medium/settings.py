@@ -128,15 +128,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'medium', 'media')
 MEDIA_URL = '/media/'
 
 # E-mails
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'Nome <email@gmail.com>'
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'email@gmail.com'
-# EMAIL_HOST_PASSWORD = 'senha'
-# EMAIL_PORT = 587
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Lei-e! <contato@leie.com.br>'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'interno.leie@gmail.com'
+EMAIL_HOST_PASSWORD = 'mestrezanza'
+EMAIL_PORT = 587
 
-CONTACT_EMAIL = 'contato@leie.com'
+CONTACT_EMAIL = 'interno.leie@gmail.com'
 
 # AUTH
 LOGIN_URL = 'accounts:login'

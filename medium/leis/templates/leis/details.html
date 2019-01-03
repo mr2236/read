@@ -2,6 +2,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+{% load wysiwyg %}
+{% wysiwyg_setup %}
 <div class="container">
       
         <!-- Begin Article
@@ -49,7 +51,7 @@
                               </span>
                               <span class = "voto" data-linha = "{{artigo.0}}"  >
                                 <span class='voto-up' data-tipo="1"  data-comentario="{{artigo.8}}"  data-artigo = "{{artigo.0}}" data-lei = "{{artigo.1}}" data-usuario = "{{artigo.7}}"><i class="fas fa-angle-up"></i></span>
-                                <span class='qtd-voto'>{% if artigo.votos %}{{artigo.votos}}{% else %}0{%endif%}</span>                           
+                                <span class='qtd-voto'>{% if artigo.6 %}{{artigo.6}}{% else %}0{%endif%}</span>                           
                                 <span class='voto-down' data-tipo="0" data-comentario="{{artigo.8}}"  data-artigo = "{{artigo.0}}" data-lei = "{{artigo.1}}" data-usuario = "{{artigo.7}}"><i class="fas fa-angle-down"></i></span>
                               </span>
                             {% endif %}
@@ -81,7 +83,7 @@
         </div>
         <div class="modal-body">
             <textarea class="form-control estilo" rows="10" cols="50" id="comment" required="required"></textarea>
-                   
+                   {% wysiwyg_editor "comment" %}
                       
         </div>
         <div class="modal-footer">          
